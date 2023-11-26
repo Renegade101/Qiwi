@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "82d04311-4dd2-43a2-b93a-b13a736e868e",
+		"name": "Qiwi-Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2820594"
+	},
+	"item": [
+		{
+			"name": "Visa Json Payment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"method\": \"payment\",\n \"params\": {\n    \"card_holder_name\": \"CARDHOLDER NAME\",\n    \"card_number\": \"4278011111275400\",\n    \"card_expire\": \"2702\",\n    \"card_cvc\": \"067\",\n    \"amount\": \"1000\",\n    \"description\": \"Month subscription\",\n    \"redirect_url\": \"https://shop.merchant.com/order/23\"\n  },\n  \"id\": \"{{$randomUUID}}\"\n}"
+				},
+				"url": {
+					"raw": "https://qiwitest.free.beeceptor.com/visa",
+					"protocol": "https",
+					"host": [
+						"qiwi-hackathon",
+						"free",
+						"beeceptor",
+						"com"
+					],
+					"path": [
+						"visa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Master Xml Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n  <request>\n\t<pg_card_number>5266886676134311</pg_card_number>\n\t<pg_description>Оплата брони</pg_description>\n\t<pg_cardholder>Ivan Ivanov</pg_cardholder>\n    <pg_expire_date>0128</pg_expire_date>\n    <pg_cvv>555</pg_cvv>\n  </request>"
+				},
+				"url": {
+					"raw": "https://qiwitest.free.beeceptor.com/master/{{$randomUUID}}",
+					"protocol": "https",
+					"host": [
+						"qiwi-hackathon",
+						"free",
+						"beeceptor",
+						"com"
+					],
+					"path": [
+						"master",
+						"{{$randomUUID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
